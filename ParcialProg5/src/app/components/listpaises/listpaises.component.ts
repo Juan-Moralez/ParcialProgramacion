@@ -7,7 +7,7 @@ import { PaisesService } from '../../services/paises.service';
   templateUrl: './listpaises.html',
   styleUrl: './listpaises.css'
 })
-export class ListpaisesComponents implements OnInit{
+export class ListpaisesComponent implements OnInit{
   constructor(public PaisesService: PaisesService){}
   
   ngOnInit() {

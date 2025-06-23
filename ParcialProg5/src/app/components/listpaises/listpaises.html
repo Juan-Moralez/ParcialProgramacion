@@ -19,6 +19,7 @@
           <th>Nombre</th>
           <th>Capital</th>
           <th>Población</th>
+          <th>Region</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,7 @@
           <td>{{ country.name?.common }}</td>
           <td>{{ country.capital?.[0] || 'N/A' }}</td>
           <td>{{ country.population | number }}</td>
+          <td>{{ country.Region || 'N/A'}}</td>
         </tr>
       </tbody>
     </table>

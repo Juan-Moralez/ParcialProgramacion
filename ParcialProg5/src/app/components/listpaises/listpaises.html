@@ -1,2 +1,40 @@
-
 <h1>Listado de paises</h1>
+
+<div class="country-list-container">
+  <h2>Países del Mundo</h2>
+
+  <div *ngIf="loading" class="message">
+    Cargando países...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="table-responsive" *ngIf="!loading && countries.length > 0">
+    <table class="country-table">
+      <thead>
+        <tr>
+          <th>Bandera</th>
+          <th>Nombre</th>
+          <th>Capital</th>
+          <th>Población</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countries">
+          <td>
+            <img [src]="country.flags?.png" alt="Bandera de {{ country.name?.common }}" class="country-flag-small">
+          </td>
+          <td>{{ country.name?.common }}</td>
+          <td>{{ country.capital?.[0] || 'N/A' }}</td>
+          <td>{{ country.population | number }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && countries.length === 0 && !errorMessage" class="message">
+    No se encontraron países.
+  </div>
+</div>

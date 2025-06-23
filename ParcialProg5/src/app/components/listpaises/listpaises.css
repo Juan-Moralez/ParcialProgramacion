@@ -4,6 +4,7 @@ h1 {
   text-align: center;
   font-family: arial, sans-serif;
 }
+
 .country-list-container {
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -44,24 +45,23 @@ h2 {
 }
 
 .country-table thead tr {
-  background-color: green;
+  background-color: green; /* Color de fondo para el encabezado */
   color: black;
   text-align: left;
 }
 
-/* **Aquí está la clave:** Bordes para los encabezados y las celdas de datos */
 .country-table th,
 .country-table td {
   padding: 12px 15px;
-  border: 1px solid black; /* Esto añade el borde a cada celda */
+  border: 2px solid black; /* Ajuste: El `!important` del comentario no es necesario si esta es la única regla. */
 }
 
 .country-table tbody tr:nth-child(even) {
-  background-color: green;
+  background-color: green; /* Color de fondo para filas pares */
 }
 
 .country-table tbody tr:hover {
-  background-color: cyan;
+  background-color: cyan; /* Resalta la fila al pasar el ratón */
 }
 
 .country-flag-small {
@@ -71,13 +71,55 @@ h2 {
   border: 1px solid #ccc;
   box-shadow: 0 0 3px rgba(0,0,0,0.2);
 }
-/* Explicación del Cambio:
-La parte crucial es la regla CSS que aplica un borde a todas las celdas de encabezado (<th>) y a todas las celdas de datos (<td>):
 
-CSS */
+/* --- ESTILOS PARA LOS FILTROS (Nuevas incorporaciones o ajustes) --- */
 
-.country-table th,
-.country-table td {
-  padding: 12px 15px;
-  border: 2px solid black !important; /* Añade !important temporalmente */
+.filters-section {
+  display: flex; /* Permite que los elementos internos se pongan en una fila */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  justify-content: center; /* Centra los grupos de filtro */
+  gap: 20px; /* Espacio entre los grupos de filtro */
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: royalblue; /* Fondo claro para la sección de filtros */
+  border: 1px solid black;
+  border-radius: 8px;
+}
+  
+.filter-group {
+  display: flex;
+  flex-direction: column; /* Etiqueta arriba, input/select abajo */
+  align-items: flex-start; /* Alinea los ítems al inicio */
+  min-width: 200px; /* Asegura un ancho mínimo para cada grupo de filtro */
+}
+
+.filter-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: black; /* Color de texto para las etiquetas de filtro */
+}
+
+.filters-section input[type="text"],
+.filters-section select {
+  padding: 10px;
+  border: 1px solid royalblue;
+  border-radius: 5px;
+  width: 100%; /* Ocupa el ancho completo del contenedor flex */
+  box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+  font-size: 1em;
+  color: black; /* Color de texto para los inputs */
+  background-color: white; /* Fondo blanco para los inputs */
+}
+
+.filters-section input[type="text"]:focus,
+.filters-section select:focus {
+  border-color: green; /* Tu color verde al enfocar */
+  outline: none; /* Elimina el contorno por defecto */
+  box-shadow: 0 0 5px rgba(0, 128, 0, 0.5); /* Sombra suave verde al enfocar */
+}
+
+hr {
+  border: none;
+  border-top: 1px solid black; /* Línea separadora suave */
+  margin: 30px 0; /* Espacio antes y después del separador */
 }

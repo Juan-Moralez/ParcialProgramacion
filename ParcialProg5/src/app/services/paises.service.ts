@@ -16,11 +16,13 @@ export class PaisesService {
    }
 
    getPaisesByName(name : String): Observable<any[]>{
-    return this.Http.get<any[]>(`https://restcountries.com/v3.1/name/${name}`)
+    const fields = 'name,capital,region,population,flags,ccn3';
+    return this.Http.get<any[]>(`https://restcountries.com/v3.1/name/${name}?fields=${fields}`)
    }
 
    getPaisesByRegion(region: string): Observable<any[]> {
-    return this.Http.get<any[]>(`https://restcountries.com/v3.1/region/${region}`);
+    const fields = 'name,capital,region,population,flags,ccn3';
+    return this.Http.get<any[]>(`https://restcountries.com/v3.1/region/${region}?fields=${fields}`);
   }
 
 }

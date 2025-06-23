@@ -1,9 +1,29 @@
-<h1>Listado de paises</h1>
+<h1>Listado de Países</h1>
 
 <div class="country-list-container">
   <h2>Países del Mundo</h2>
 
-  <div *ngIf="loading" class="message">
+  <div class="filters-section">
+    <div class="filter-group">
+      <label for="countryName">Buscar por Nombre:</label>
+      <input type="text" id="countryName" [(ngModel)]="filterName" (input)="applyFilter()" placeholder="Ej: Argentina, France...">
+    </div>
+
+    <div class="filter-group">
+      <label for="countryRegion">Filtrar por Región:</label>
+      <select id="countryRegion" [(ngModel)]="filterRegion" (change)="applyFilter()">
+        <option value="">Todas las regiones</option>
+        <option value="Africa">África</option>
+        <option value="Americas">Américas</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europa</option>
+        <option value="Oceania">Oceanía</option>
+        <option value="Antarctic">Antártida</option>
+      </select>
+    </div>
+  </div>
+
+  <hr> <div *ngIf="loading" class="message">
     Cargando países...
   </div>
 
@@ -19,7 +39,7 @@
           <th>Nombre</th>
           <th>Capital</th>
           <th>Población</th>
-          <th>Region</th>
+          <th>Región</th>
         </tr>
       </thead>
       <tbody>
@@ -30,13 +50,13 @@
           <td>{{ country.name?.common }}</td>
           <td>{{ country.capital?.[0] || 'N/A' }}</td>
           <td>{{ country.population | number }}</td>
-          <td>{{ country.Region || 'N/A'}}</td>
+          <td>{{ country.region || 'N/A'}}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div *ngIf="!loading && countries.length === 0 && !errorMessage" class="message">
-    No se encontraron países.
+    No se encontraron países que coincidan con la búsqueda.
   </div>
 </div>
